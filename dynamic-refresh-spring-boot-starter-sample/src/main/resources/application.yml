@@ -1,0 +1,25 @@
+server:
+  port: 8080
+  contextPath: /
+spring:
+  application:
+    name: dynamic-refresh-starter-sample
+  mvc:
+    servlet:
+      loadOnStartup: 1
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+logging:
+  level:
+    com.myz.starters.dynamic.refresh.sample.controller.LogController: DEBUG
+app:
+  id: game-dynamic-refresh-app
+apollo:
+  meta: http://10.20.10.152:8080
+  bootstrap:
+    enabled: true
+    eagerLoad:
+      enabled: true # 提前读取apollo的配置新设置到environment的APOLLO_BOOTSTRAP_ENABLED，参考 BootstrapApplicationListener-> SpringApplication#run -> ApolloApplicationContextContextInitializer#postProcessEnvironment

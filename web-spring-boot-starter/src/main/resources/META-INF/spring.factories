@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.myz.starters.distribute.sample.web.MyzWebAutoConfiguration

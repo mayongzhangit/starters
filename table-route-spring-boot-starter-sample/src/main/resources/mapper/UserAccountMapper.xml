@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.myz.starters.table.route.sample.mapper.UserAccountMapper">
+	<insert id="insert" parameterType="map" useGeneratedKeys="true">
+		INSERT INTO account_info_${route}(
+		g_user_id,country,type
+		<if test="userAccount.balance != 0">
+			,balance
+		</if>
+		<if test="userAccount.currency != 0">
+			,currency
+		</if>
+		<if test="userAccount.freezeCurrency != 0">
+			,freeze_currency
+		</if>
+		)
+		VALUES (
+		#{userAccount.gUserId},#{userAccount.country},#{userAccount.type}
+		<if test="userAccount.balance != 0">
+			,balance=#{userAccount.balance}
+		</if>
+		<if test="userAccount.currency != 0">
+			,currency=#{userAccount.currency}
+		</if>
+		<if test="userAccount.freezeCurrency != 0">
+			,freeze_currency = #{userAccount.freezeCurrency}
+		</if>
+		)
+	</insert>
+
+    <insert id="insertACID" parameterType="map" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO account_info_${route}(g_user_id,type
+		<if test="userAccount.country != '' and userAccount.country != null">
+			,country
+		</if>
+		<if test="userAccount.balance != 0">
+			,balance
+		</if>
+		<if test="userAccount.currency != 0">
+			,currency
+		</if>
+		<if test="userAccount.freezeCurrency != 0">
+			,freeze_currency
+		</if>
+		)
+		VALUES (#{userAccount.gUserId},#{userAccount.type}
+		<if test="userAccount.country != '' and userAccount.country !=null">
+			,#{userAccount.country}
+		</if>
+		<if test="userAccount.balance != 0">
+			,#{userAccount.balance}
+		</if>
+		<if test="userAccount.currency != 0">
+			,#{userAccount.currency}
+		</if>
+		<if test="userAccount.freezeCurrency != 0">
+			,#{userAccount.freezeCurrency}
+		</if>
+		)
+		ON DUPLICATE KEY UPDATE update_time = now()
+		<if test="userAccount.balance != 0">
+			,balance=balance+#{userAccount.balance}
+		</if>
+		<if test="userAccount.currency != 0">
+		    ,currency=currency+#{userAccount.currency}
+		</if>
+		<if test="userAccount.freezeCurrency != 0">
+			,freeze_currency=freeze_currency+#{userAccount.freezeCurrency}
+		</if>
+
+	</insert>
+
+	<update id="updateAccount" parameterType="map">
+		UPDATE account_info_${route} SET update_time=now()
+		<if test="recordAmount != null and recordAmount != ''">
+			,balance = balance + #{recordAmount}
+		</if>
+		<if test="country != null and country != ''">
+			,country = #{country}
+		</if>
+		WHERE g_user_id = #{gUserId}
+		<if test="type != null and type != ''">
+			,type = #{type}
+		</if>
+	</update>
+
+
+	<select id="findByGUserId" resultType="UserAccount" resultMap="UserAccountMap">
+		SELECT g_user_id, balance, status, currency, freeze_currency,country, type
+		FROM account_info_${route} WHERE g_user_id = #{gUserId} and type=#{type}
+	</select>
+
+	<select id="findByUserId" resultType="UserAccount" resultMap="UserAccountMap">
+		SELECT g_user_id, balance, status, currency, freeze_currency,country, type
+		FROM account_info_${route} WHERE g_user_id = #{gUserId}
+	</select>
+
+	<select id="findByModel" resultType="UserAccount" resultMap="UserAccountMap">
+		SELECT g_user_id, balance, status, currency, freeze_currency,country, type
+		FROM account_info_${route} WHERE g_user_id = #{userAccount.gUserId}
+	</select>
+
+	<select id="queryAccountByGUserId" resultType="UserAccount" resultMap="UserAccountMap">
+		SELECT g_user_id, balance, status, currency, freeze_currency,country, type
+		FROM account_info_${route}
+		WHERE g_user_id = #{gUserId}
+	</select>
+
+    <resultMap type="UserAccount" id="UserAccountMap">
+        <result column="balance" property="balance"/>
+        <result column="g_user_id" property="gUserId"/>
+        <result column="status" property="status"/>
+		<result column="currency" property="currency"/>
+		<result column="freeze_currency" property="freezeCurrency"/>
+		<result column="country" property="country"/>
+		<result column="type" property="type"/>
+    </resultMap>
+
+</mapper>

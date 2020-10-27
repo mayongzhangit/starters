@@ -1,0 +1,1 @@
+provides: dynamic-refresh-spring-boot-autoconfigure,spring-boot-starter,apollo-client,spring-cloud-context,jackson-databind

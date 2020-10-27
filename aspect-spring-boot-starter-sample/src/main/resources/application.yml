@@ -1,0 +1,23 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+spring:
+  mvc:
+    servlet:
+      load-on-startup: 1
+  application:
+    name: aspect-starter-sample
+logging:
+  level:
+    com.myz.starters.aspect.sample: info
+    PARAM-RETVAL-PRINTER: debug # 优先级高于logback-spring.xml <logger level=info
+
+app:
+  id: game-dynamic-refresh-app
+apollo:
+  meta: http://10.20.10.152:8080
+  bootstrap:
+    enabled: true
+    eagerLoad:
+      enabled: true # 提前读取apollo的配置新设置到environment的APOLLO_BOOTSTRAP_ENABLED，参考 BootstrapApplicationListener-> SpringApplication#run -> ApolloApplicationContextContextInitializer#postProcessEnvironment

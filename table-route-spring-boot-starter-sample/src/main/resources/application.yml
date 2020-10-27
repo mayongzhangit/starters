@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:mysql://10.20.12.244:3306/game_account?characterEncoding=UTF-8
+    username: game_account
+    password: ckssuxbzsn3fhshsbmr2izfuieoRnxHx
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+mybatis:
+  typeAliasesPackage: com.myz.starters.distribute.sample.table.route.sample.model
+  mapperLocations: classpath:mapper/*.xml
+
+logging:
+  level:
+    com.myz.starters.distribute.sample.table.route.sample.mapper: debug

@@ -1,0 +1,20 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+spring:
+  mvc:
+    servlet:
+      load-on-startup: 1
+  application:
+    name: web-spring-boot-starter-sample
+logging:
+  level:
+    com.myz.starters.sample: info
+myz:
+  web:
+    exception-handler:
+      enabled: true
+  controller:
+    advice:
+      enabled: true

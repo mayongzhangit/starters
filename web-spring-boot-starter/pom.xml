@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>myz-starters</artifactId>
+        <groupId>com.myz.starters</groupId>
+        <version>1.2-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>web-spring-boot-starter</artifactId>
+    <name>web-spring-boot-starter</name>
+    <url>http://www.example.com</url>
+
+    <developers>
+        <developer>
+            <name>mayongzhan</name>
+            <email>2641007740@qq.com</email>
+        </developer>
+    </developers>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure-processor</artifactId>
+        </dependency>
+        <!-- @ConfigurationProperties annotation processing (metadata for IDEs) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.70</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.myz</groupId>
+            <artifactId>commons</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+</project>

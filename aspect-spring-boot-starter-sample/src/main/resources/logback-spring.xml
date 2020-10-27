@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <jmxConfigurator/>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    ​
+    <springProperty scope="context" name="springAppName" source="spring.application.name"/>
+
+    <property name="LOG_FILE_PREFIX" value="/data/logs/${springAppName}/${springAppName}"/>​
+    <property name="PARAM-RETVAL" value="param-retval"/>
+
+    <appender name="TEST_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_FILE_PREFIX}-test.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>[%date] [%-5p] [%thread] [${springAppName:-} %X{X-B3-TraceId:-},%X{X-B3-SpanId:-},%X{X-Span-Export:-}] [%logger{10}] [%file:%line] %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_FILE_PREFIX}-test-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!--            <maxFileSize>50MB</maxFileSize> &lt;!&ndash;超过50MB生成一个新文件&ndash;&gt;-->
+            <maxHistory>7</maxHistory><!--存7天-->
+            <totalSizeCap>60GB</totalSizeCap><!--总日志大小-->
+        </rollingPolicy>
+    </appender>
+    <appender name="PARAM-RETVAL-PRINTER_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_FILE_PREFIX}-${PARAM-RETVAL}.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>[%date] [%-5p] [%thread] [${springAppName:-} %X{X-B3-TraceId:-},%X{X-B3-SpanId:-},%X{X-Span-Export:-}] [%logger{10}] [%file:%line] %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_FILE_PREFIX}-${PARAM-RETVAL}-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!--            <maxFileSize>50MB</maxFileSize> &lt;!&ndash;超过50MB生成一个新文件&ndash;&gt;-->
+            <maxHistory>7</maxHistory><!--存7天-->
+            <totalSizeCap>60GB</totalSizeCap><!--总日志大小-->
+        </rollingPolicy>
+    </appender>
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_FILE_PREFIX}.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>[%date] [%-5p] [%thread] [${springAppName:-} %X{X-B3-TraceId:-},%X{X-B3-SpanId:-},%X{X-Span-Export:-}] [%logger{10}] [%file:%line] %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_FILE_PREFIX}-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>14</maxHistory>
+            <totalSizeCap>60GB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%date] [%-5p] [%thread] [${springAppName:-} %X{X-B3-TraceId:-},%X{X-B3-SpanId:-},%X{X-Span-Export:-}] [%logger{10}] [%file:%line] %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+    </appender>
+
+    <root level="INFO" >
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="FILE" />
+    </root>
+
+    <!-- logger标签中的level="debug" 表示默认级别 低于application.yml中配置的logging.level.yourloggername: info-->
+    <logger name="PARAM-RETVAL-PRINTER" level="info"  additivity="false">
+        <appender-ref ref="PARAM-RETVAL-PRINTER_APPENDER"/>
+    </logger>
+
+    <logger name="test" level="info" additivity="false">
+        <appender-ref ref="TEST_APPENDER"/>
+    </logger>
+
+    <springProfile name="local">
+        <root level="info">
+            <appender-ref ref="STDOUT" />
+        </root>
+    </springProfile>
+</configuration>
