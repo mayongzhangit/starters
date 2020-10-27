@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  TableRouteAutoConfiguration
+  com.myz.starters.distribute.sample.table.route.autoconfigure.TableRouteAutoConfiguration
