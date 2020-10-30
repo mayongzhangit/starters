@@ -1,6 +1,7 @@
 package com.myz.starters.distribute.sample.web.controller.advice;
 
-import com.alibaba.fastjson.JSON;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.myz.common.util.ApiResult;
 import com.myz.starters.distribute.sample.web.controller.annotation.MyzControllerAdviceAnno;
 import com.myz.starters.distribute.sample.web.controller.exception.MyzBizException;
@@ -20,11 +21,13 @@ public class MyzControllerAdvice {
 
     private Logger LOGGER = LoggerFactory.getLogger(MyzControllerAdvice.class);
 
+    private ObjectMapper objectMapper = new ObjectMapper();
+
     @ExceptionHandler(Throwable.class)
-    public ApiResult handle(Throwable throwable){
+    public ApiResult handle(Throwable throwable) throws JsonProcessingException {
         if (throwable instanceof MyzBizException){
             MyzBizException wzException = (MyzBizException) throwable;
-            LOGGER.info("myzEx code={} ,msg={},params={}",wzException.getCode(),wzException.getMsg(), JSON.toJSON(wzException.getParams()));
+            LOGGER.info("myzEx code={} ,msg={},params={}",wzException.getCode(),wzException.getMsg(), objectMapper.writeValueAsString(wzException.getParams()));
             return ApiResult.build(wzException.getCode(),wzException.getMsg());
         }
         LOGGER.error("myzEx error e",throwable);
