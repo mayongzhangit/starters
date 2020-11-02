@@ -28,6 +28,8 @@
     <module>dynamic-refresh-spring-boot-starter-sample</module>
     <module>distribute-spring-boot-starter</module>
     <module>distribute-spring-boot-starter-sample</module>
+    <module>notice-spring-boot-starter</module>
+    <module>notice-spring-boot-starter-sample</module>
   </modules>
 
   <dependencyManagement>

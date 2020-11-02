@@ -1,0 +1,18 @@
+server:
+  port: 8080
+  servlet:
+    contextPath: /
+spring:
+  application:
+    name: game-notice-sample
+  mvc:
+    servlet:
+      loadOnStartUp: 1
+
+game:
+  notice:
+    dingding:
+      infoMap:
+        dingdingService:
+          accessToken: dbb8cf706c2b586bdfd6de275f9fd8104398554804f43e3d23f9428bb5c42399
+          secret: SECfbb8d23fe3e3f4cb02383c8cb4a27435c719f3bdd4d3238ad79a7991175dfaf7
