@@ -3,31 +3,26 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>myz-starters</artifactId>
     <groupId>com.myz.starters</groupId>
+    <artifactId>myz-starters</artifactId>
     <version>1.1.1-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>notice-spring-boot-starter-sample</artifactId>
+  <artifactId>login-spring-boot-starter-sample</artifactId>
 
-  <name>notice-spring-boot-starter-sample</name>
+  <name>login-spring-boot-starter-sample</name>
   <url>http://www.example.com</url>
-
 
   <dependencies>
     <dependency>
       <groupId>com.myz.starters</groupId>
-      <artifactId>notice-spring-boot-starter</artifactId>
+      <artifactId>login-spring-boot-starter</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
     </dependency>
   </dependencies>
 </project>
