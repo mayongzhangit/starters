@@ -1,6 +1,8 @@
 package com.myz.starters.distribute;
 
+import com.myz.starters.distribute.id.SnowflakeIdWorkerConfiguration;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 /**
  * @author yzMa
@@ -9,5 +11,6 @@ import org.springframework.context.annotation.Configuration;
  * @email 2641007740@qq.com
  */
 @Configuration
+@Import(SnowflakeIdWorkerConfiguration.class)
 public class DistributeIdAutoConfiguration {
 }

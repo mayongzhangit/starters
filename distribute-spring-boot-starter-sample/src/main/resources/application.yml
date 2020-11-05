@@ -1,0 +1,5 @@
+distribute:
+  id:
+    snowflake:
+      data-center-id: 1
+      worker-id: 2
