@@ -2,9 +2,9 @@ package com.myz.starters.distribute.sample.web.controller.advice;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.myz.common.exception.MyzBizException;
 import com.myz.common.util.ApiResult;
 import com.myz.starters.distribute.sample.web.controller.annotation.MyzControllerAdviceAnno;
-import com.myz.starters.distribute.sample.web.controller.exception.MyzBizException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ExceptionHandler;
