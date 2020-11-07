@@ -3,3 +3,10 @@ distribute:
     snowflake:
       data-center-id: 1
       worker-id: 2
+spring:
+  application:
+    name: distribute-sample
+  redis:
+    datasource: 0
+    host: localhost
+    port: 6379

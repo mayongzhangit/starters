@@ -1,6 +1,8 @@
 package com.myz.starters.distribute;
 
 import com.myz.starters.distribute.lock.RedisLockConfiguration;
+import org.springframework.boot.autoconfigure.AutoConfigureAfter;
+import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
@@ -11,6 +13,7 @@ import org.springframework.context.annotation.Import;
  * @email 2641007740@qq.com
  */
 @Configuration
+@AutoConfigureAfter(RedisAutoConfiguration.class)
 @Import(RedisLockConfiguration.class)
 public class DistributeLockAutoConfiguration {
 }

@@ -1,5 +1,6 @@
 package com.myz.starters.distribute.sample.sample.controller;
 
+import com.myz.common.exception.MyzBizException;
 import com.myz.common.util.ApiResult;
 import com.myz.starters.distribute.sample.web.controller.annotation.MyzControllerAdviceAnno;
 import lombok.extern.slf4j.Slf4j;

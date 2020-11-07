@@ -1,5 +1,7 @@
 package com.myz.starters.distribute.lock;
 
+import redis.clients.jedis.JedisCluster;
+
 /**
  * @author yzMa
  * @desc
@@ -7,4 +9,10 @@ package com.myz.starters.distribute.lock;
  * @email 2641007740@qq.com
  */
 public class JedisClusterLock {
+
+    private JedisCluster jedisCluster;
+
+    public JedisClusterLock(JedisCluster jedisCluster){
+        this.jedisCluster = jedisCluster;
+    }
 }

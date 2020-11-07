@@ -19,6 +19,10 @@ public class RedisTemplateLock implements RedisLock{
 
     private StringRedisTemplate stringRedisTemplate ;
 
+    public RedisTemplateLock(StringRedisTemplate stringRedisTemplate){
+        this.stringRedisTemplate = stringRedisTemplate;
+    }
+
     /**
      *
      * @param key

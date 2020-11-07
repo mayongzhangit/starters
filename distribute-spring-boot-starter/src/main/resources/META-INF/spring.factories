@@ -1,2 +1,3 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-    com.myz.starters.distribute.DistributeIdAutoConfiguration
+    com.myz.starters.distribute.DistributeIdAutoConfiguration,\
+    com.myz.starters.distribute.DistributeLockAutoConfiguration

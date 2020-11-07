@@ -13,8 +13,11 @@ import java.util.UUID;
  */
 public class RedisLockTemplate<R> {
 
-    @Autowired
     private RedisLock redisLock;
+
+    public RedisLockTemplate(RedisLock redisLock){
+        this.redisLock = redisLock;
+    }
 
     public R tryBiz(BizCallback<R> bizCallback,String key){
         String uidVal = generatorUid();
