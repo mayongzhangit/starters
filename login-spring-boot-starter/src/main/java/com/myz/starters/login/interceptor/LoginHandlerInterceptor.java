@@ -53,6 +53,9 @@ public class LoginHandlerInterceptor extends HandlerInterceptorAdapter {
         if ((classLoginRequired != null && classLoginRequired.required() == false)) {
             return super.preHandle(request, response, handler);
         }
+        if(methodLoginRequired == null && classLoginRequired == null){
+            return super.preHandle(request,response,handler);
+        }
         /**
          * 判断是否需返回json
          * @see {@link org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor}
