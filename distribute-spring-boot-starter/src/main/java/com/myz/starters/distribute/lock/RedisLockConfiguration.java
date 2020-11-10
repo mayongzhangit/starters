@@ -1,8 +1,7 @@
 package com.myz.starters.distribute.lock;
 
-import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -16,6 +15,7 @@ import redis.clients.jedis.JedisCluster;
  * @email 2641007740@qq.com
  */
 @Configuration
+@ConditionalOnProperty(prefix = "distribute.lock",name = "enabled")
 public class RedisLockConfiguration {
 
     @Primary
