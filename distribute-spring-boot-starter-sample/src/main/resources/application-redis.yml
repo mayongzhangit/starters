@@ -9,4 +9,5 @@ spring:
       nodes: dev.game.game.sg2.redis:6379
 distribute:
   lock:
-    enabled: true
+    redis:
+      enabled: true
