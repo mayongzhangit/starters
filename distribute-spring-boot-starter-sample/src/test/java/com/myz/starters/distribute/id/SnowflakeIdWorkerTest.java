@@ -1,8 +1,6 @@
 package com.myz.starters.distribute.id;
 
-import com.myz.starters.distribute.id.SnowflakeIdWorker;
-import com.myz.starters.distribute.id.SnowflakeInfo;
-import com.myz.starters.distribute.sample.DistributeStartApp;
+import com.yzma.starters.distribute.sample.DistributeStartApp;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;

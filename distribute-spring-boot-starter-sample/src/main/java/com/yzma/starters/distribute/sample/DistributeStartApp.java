@@ -1,4 +1,4 @@
-package com.myz.starters.distribute.sample;
+package com.yzma.starters.distribute.sample;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
