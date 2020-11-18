@@ -1,7 +1,8 @@
 package com.myz.starters.distribute.lock;
 
 import com.myz.common.exception.MyzBizException;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.UUID;
 
@@ -12,6 +13,8 @@ import java.util.UUID;
  * @email 2641007740@qq.com
  */
 public class RedisLockTemplate<R> {
+
+    private Logger LOGGER = LoggerFactory.getLogger(RedisLockTemplate.class);
 
     private RedisLock redisLock;
 
@@ -51,12 +54,18 @@ public class RedisLockTemplate<R> {
             if (!acquired){
                 throw new MyzBizException("tryAcquireFail","尝试获取锁失败",key,val,ex);
             }
+            LOGGER.info("acquire lock success key={},val={},ex={}",key,val,ex);
             return bizCallback.doBiz();
+        }catch (MyzBizException throwable){
+            LOGGER.info("acquire lock fail key={},val={},ex={}",key,val,ex);
+            throw throwable;
         }catch (Throwable throwable){
+            LOGGER.error("acquire lock throwable key={},val={},ex={},cause=",key,val,ex,throwable);
             throw throwable;
         }finally {
             if (acquired){
                 redisLock.release(key,val);
+                LOGGER.info("release lock success key={},val={},ex={}",key,val,ex);
             }
         }
     }

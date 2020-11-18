@@ -1,0 +1,12 @@
+spring:
+  redis:
+# 内部非集群
+#    database: 0
+#    host: redis-be85561-Game-dev.dcs.huaweicloud.com
+#    port: 6379
+# 域名对应的是集群，不适用cluster.node会导致分配槽位失败 https://blog.csdn.net/weixin_46053046/article/details/103753813
+    cluster:
+      nodes: dev.game.game.sg2.redis:6379
+distribute:
+  lock:
+    enabled: true
