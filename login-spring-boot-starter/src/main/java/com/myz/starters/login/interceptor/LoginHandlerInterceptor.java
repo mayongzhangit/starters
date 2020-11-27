@@ -34,6 +34,8 @@ public class LoginHandlerInterceptor extends HandlerInterceptorAdapter {
 
     private ObjectMapper objectMapper = new ObjectMapper();
 
+    private String SESSION_INVALID="12345";
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         if (!(handler instanceof HandlerMethod)) {
@@ -70,7 +72,7 @@ public class LoginHandlerInterceptor extends HandlerInterceptorAdapter {
 
         String token = CookieUtil.extractToken(request);
         if (token == null || token.trim().length() == 0) {
-            flushResult(response, "no-token", "token未找到，请检查【header/parameter/cookie】中是否存在token，不存在则前端发起静默授权，存在请传递");
+            flushResult(response, SESSION_INVALID,"no-token","no-token", "token未找到，请检查【header/parameter/cookie】中是否存在token，不存在则前端发起静默授权，存在请传递");
             return false;
         }
         try {
@@ -78,11 +80,11 @@ public class LoginHandlerInterceptor extends HandlerInterceptorAdapter {
             LoginContext.set(userJson);
             LOGGER.debug("token:{},userJson={}",token,userJson);
         } catch (TokenExpiredException teex) {
-            flushResult(response, "expired-token", "token过期，需前端发起静默授权，后端重新生成一个新Token，前端传递新Token");
+            flushResult(response,SESSION_INVALID ,"expired-token","expired-token", "token过期，需前端发起静默授权，后端重新生成一个新Token，前端传递新Token");
             return false;
         } catch (Exception e) {
             LOGGER.error("illegal token={},e", token, e);
-            flushResult(response, "illegal-token", "非法token");
+            flushResult(response, SESSION_INVALID,"illegal-token","illegal-token", "非法token");
             return false;
         }
         return super.preHandle(request, response, handler);
@@ -94,10 +96,10 @@ public class LoginHandlerInterceptor extends HandlerInterceptorAdapter {
      * @param msg
      * @throws IOException
      */
-    private void flushResult(HttpServletResponse response, String code, String msg) throws IOException {
+    private void flushResult(HttpServletResponse response, String code,String subCode, String msg,String subMsg) throws IOException {
         response.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
         PrintWriter writer = response.getWriter();
-        writer.write(objectMapper.writeValueAsString(ApiResult.build(code, msg)));
+        writer.write(objectMapper.writeValueAsString(ApiResult.build(code,subCode, msg,subMsg)));
         writer.flush();
     }
 
