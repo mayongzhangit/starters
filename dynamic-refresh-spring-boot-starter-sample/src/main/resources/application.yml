@@ -3,10 +3,12 @@ server:
   contextPath: /
 spring:
   application:
-    name: dynamic-refresh-starter-sample
+    name: dynamic-refreshr-demo
   mvc:
     servlet:
       loadOnStartup: 1
+  profiles:
+    include: redis
 management:
   endpoints:
     web:

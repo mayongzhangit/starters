@@ -21,7 +21,7 @@ import java.util.Set;
 
 /**
  * @author yzMa
- * @desc
+ * @desc  比 @see{ApolloConfigChangeListener} 增强的部分是可以监听不同namespace
  * @date 2020/7/23 9:46
  * @email 2641007740@qq.com
  */

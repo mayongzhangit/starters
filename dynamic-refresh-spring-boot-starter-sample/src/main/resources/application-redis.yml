@@ -1,0 +1,10 @@
+spring:
+  redis:
+    cluster:
+      nodes: test.asp.cbs.sg2.redis:6379
+    lettuce:
+      pool:
+        max-wait: 50
+        max-active: 100
+        min-idle: 8
+    command-timeout: 10000

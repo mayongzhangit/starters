@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?> 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
-<mapper namespace="com.myz.starters.table.route.sample.mapper.UserAccountMapper">
+<mapper namespace="com.myz.starters.sample.table.route.sample.mapper.UserAccountMapper">
 	<insert id="insert" parameterType="map" useGeneratedKeys="true">
 		INSERT INTO account_info_${route}(
 		g_user_id,country,type
