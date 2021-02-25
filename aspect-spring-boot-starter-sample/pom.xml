@@ -12,11 +12,11 @@
     <artifactId>aspect-spring-boot-starter-sample</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>com.myz.starters</groupId>
-            <artifactId>dynamic-refresh-spring-boot-starter</artifactId>
-            <version>${project.version}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.myz.starters</groupId>-->
+<!--            <artifactId>dynamic-refresh-spring-boot-starter</artifactId>-->
+<!--            <version>${project.version}</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

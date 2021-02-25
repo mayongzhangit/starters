@@ -6,12 +6,10 @@ spring:
   mvc:
     servlet:
       load-on-startup: 1
-  application:
-    name: aspect-starter-sample
 logging:
   level:
     com.myz.starters.aspect.sample: info
-    PARAM-RETVAL-PRINTER: debug # 优先级高于logback-spring.xml <logger level=info
+    PARAM-RETVAL-PRINTER: info # 优先级高于logback-spring.xml <logger level=info
 
 app:
   id: game-dynamic-refresh-app

@@ -2,10 +2,10 @@
 <configuration>
     <jmxConfigurator/>
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
-    ​
+
     <springProperty scope="context" name="springAppName" source="spring.application.name"/>
 
-    <property name="LOG_FILE_PREFIX" value="/data/logs/${springAppName}/${springAppName}"/>​
+    <property name="LOG_FILE_PREFIX" value="/data/logs/${springAppName}/${springAppName}"/>
     <property name="PARAM-RETVAL" value="param-retval"/>
 
     <appender name="TEST_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">

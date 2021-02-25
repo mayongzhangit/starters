@@ -1,0 +1,3 @@
+spring:
+  application:
+    name: aspect-starter-sample
